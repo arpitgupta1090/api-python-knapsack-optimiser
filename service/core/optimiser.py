@@ -17,10 +17,8 @@ def optimiser(values, weights, capacities ):
     print('Total value =', computed_value)
     for i in range(len(values)):
         if solver.BestSolutionContains(i):
-            print(f"{i=}")
             packed_values.append(i)
             packed_weights.append(weights[0][i])
-            print(f"{weights[0][i]}")
             total_weight += weights[0][i]
     # print('Total weight:', total_weight)
     # print('Packed items:', packed_values)

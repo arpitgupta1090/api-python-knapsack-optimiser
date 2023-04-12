@@ -1,13 +1,26 @@
 from pydantic import BaseModel
 from typing import List
+from service.core.sample_data import request_body
+
+
+class Optimiser(BaseModel):
+    name: str
+    type: str
+    version: str
 
 
 class Fields(BaseModel):
-    capacities: List[int]
+    capacity: int
     values: List[int]
-    weights: List[List[int]]
+    weights: List[int]
 
 
 class RequestModel(BaseModel):
-    request_version: int
+    request_version: str
+    optimiser: Optimiser
     fields: List[Fields]
+
+    class Config:
+        schema_extra = {
+            "example": request_body
+        }
