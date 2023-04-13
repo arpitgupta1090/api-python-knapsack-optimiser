@@ -1,13 +1,15 @@
 import uvicorn
 from fastapi import FastAPI
 import api
+from service.exceptions.exception import validation_exception_handler
+from fastapi.exceptions import RequestValidationError
 
 description = """
 **This API provides a optimised output for the Knapsack problem**
 
 * **Home Page** (You can read the API documentation on the home page "/". 
                 Sample Request and Response are provided on the right side).
-* **Test** (use **/test** endpoint to test the API using sample data or your own data).
+* **Try It** (use **/tryit** endpoint to test the API using sample data or your own data).
 """
 
 app = FastAPI(
@@ -18,10 +20,11 @@ app = FastAPI(
         "name": "Arpit Gupta",
         "email": "arpitgupta1090@gmail.com",
     },
-    docs_url="/test",
+    docs_url="/tryit",
     redoc_url="/"
 )
 app.include_router(api.router)
+app.add_exception_handler(RequestValidationError, validation_exception_handler)
 
 
 @app.get("/ping", tags=["Health check"], summary="Check if the service is operational")
