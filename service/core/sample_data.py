@@ -23,88 +23,105 @@ request_body = {
     ]
 }
 
-response_body = {
-  "metadata": {
-    "optimiser": {
-      "name": "Knapsack Optimiser",
-      "type": "zero-one",
-      "version": "v1.0"
-    }
-  },
-  "results": [
+error_body = {
+  "errors": [
     {
-      "total_value": 7534,
-      "total_weight": 850,
-      "values": [
-        0,
-        1,
-        3,
-        4,
-        6,
-        10,
-        11,
-        12,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        21,
-        22,
-        24,
-        27,
-        28,
-        29,
-        30,
-        31,
-        32,
-        34,
-        38,
-        39,
-        41,
-        42,
-        44,
-        47,
-        48,
-        49
-      ],
-      "weights": [
-        7,
-        0,
-        22,
-        80,
-        11,
-        59,
-        18,
-        0,
-        3,
-        8,
-        15,
-        42,
-        9,
-        0,
-        47,
-        52,
-        26,
-        6,
-        29,
-        84,
-        2,
-        4,
-        18,
-        7,
-        71,
-        3,
-        66,
-        31,
-        0,
-        65,
-        52,
-        13
-      ]
+      "code": "KSO_INPUT_0001",
+      "message": "field required",
+      "target": "body-->optimiser-->version",
+      "type": "required"
+    },
+    {
+      "code": "KSO_INPUT_0002",
+      "message": "value is not a valid integer",
+      "target": "body-->fields-->0-->capacity",
+      "type": "invalid type"
     }
   ]
+}
+
+response_body = {
+    "metadata": {
+        "optimiser": {
+            "name": "Knapsack Optimiser",
+            "type": "zero-one",
+            "version": "v1.0"
+        }
+    },
+    "results": [
+        {
+            "total_value": 7534,
+            "total_weight": 850,
+            "values": [
+                0,
+                1,
+                3,
+                4,
+                6,
+                10,
+                11,
+                12,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                21,
+                22,
+                24,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                34,
+                38,
+                39,
+                41,
+                42,
+                44,
+                47,
+                48,
+                49
+            ],
+            "weights": [
+                7,
+                0,
+                22,
+                80,
+                11,
+                59,
+                18,
+                0,
+                3,
+                8,
+                15,
+                42,
+                9,
+                0,
+                47,
+                52,
+                26,
+                6,
+                29,
+                84,
+                2,
+                4,
+                18,
+                7,
+                71,
+                3,
+                66,
+                31,
+                0,
+                65,
+                52,
+                13
+            ]
+        }
+    ]
 }
 
 odd_responses = {
@@ -115,6 +132,40 @@ odd_responses = {
                 "examples": {
                     "sample": {
                         "value": response_body
+                    }
+                }
+            }
+        }
+    },
+    "400": {
+        "description": "Request validation error",
+        "content": {
+            "application/json": {
+                "schema": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": ["code",
+                                     "message",
+                                     "target",
+                                     "type"],
+                        "properties": {
+                            "code": {"type": "string",
+                                     "title": "error code"},
+                            "message": {"type": "string",
+                                        "title": "error message"},
+                            "target": {"type": "string",
+                                       "title": "error location"},
+                            "type": {"type": "string",
+                                     "title": "error type"}
+
+                        }
+                    },
+
+                },
+                "examples": {
+                    "sample": {
+                        "value": error_body
                     }
                 }
             }
