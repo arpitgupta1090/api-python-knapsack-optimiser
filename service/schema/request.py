@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import List
-from service.core.sample_data import request_body
+from service.openapi.sample_data import request_body
 
 
 class Optimiser(BaseModel):

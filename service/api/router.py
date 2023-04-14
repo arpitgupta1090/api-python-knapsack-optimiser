@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from service.core.optimiser import optimiser
-from service.core.sample_data import odd_responses
+from service.openapi.api_spec import odd_responses
 from service.schema.request import RequestModel
 from service.schema.response import ResponseModel
 

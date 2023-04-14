@@ -1,14 +1,13 @@
-from fastapi.exceptions import RequestValidationError, ValidationError
+from fastapi import Request, status
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from fastapi import Request, status
 
 
-async def validation_exception_handler(request: Request, exc: RequestValidationError):
+def validation_exception_handler(request: Request, exc):
     errors = list()
     for elem in exc.errors():
         error_code = "KSO_INPUT_0000"
-        error_message = elem.get('msg')
+        error_message = f"Failed to execute {request.method} on {request.url}: {elem.get('msg')}"
         error_target = "request body"
         error_type = "invalid"
 
@@ -39,6 +38,50 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
                 )
             )
     return JSONResponse(
-        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        status_code=status.HTTP_400_BAD_REQUEST,
+        content={"errors": errors}
+    )
+
+
+def http_exception_handler(request, exc):
+    errors = list()
+    error_message = f"Failed to execute {request.method} on {request.url}: {exc.detail}"
+    error_code = "KSO_GENERAL_0000"
+    error_target = "input"
+    error_type = "invalid"
+    errors.append(
+        jsonable_encoder(
+            {
+                "code": error_code,
+                "message": error_message,
+                "target": error_target,
+                "type": error_type,
+            }
+        )
+    )
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"errors": errors}
+    )
+
+
+def internal_exception_handler(request, exc):
+    errors = list()
+    error_message = f"Failed to execute {request.method} on {request.url}: {repr(exc)}"
+    error_code = "KSO_INTERNAL_0000"
+    error_target = "server"
+    error_type = "internal error"
+    errors.append(
+        jsonable_encoder(
+            {
+                "code": error_code,
+                "message": error_message,
+                "target": error_target,
+                "type": error_type,
+            }
+        )
+    )
+    return JSONResponse(
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         content={"errors": errors}
     )
