@@ -6,8 +6,8 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from service import api
 from service.exceptions.exception import (validation_exception_handler,
                                           http_exception_handler,
-                                          internal_exception_handler)
-
+                                          internal_exception_handler,
+                                          )
 
 app = FastAPI(
     docs_url="/tryit",

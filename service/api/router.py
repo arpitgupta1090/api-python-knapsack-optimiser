@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from service.core.optimiser import optimiser
-from service.openapi.api_spec import odd_responses
+from service.openapi.api_spec import additional_responses
 from service.schema.request import RequestModel
 from service.schema.response import ResponseModel
 
@@ -11,7 +11,7 @@ router = APIRouter(
 
 @router.post("/optimiser", tags=["API"], response_model_exclude_none=True,
              summary="Get optimised data for your knapsack",
-             response_model=ResponseModel, responses=odd_responses)
+             response_model=ResponseModel, responses=additional_responses)
 def optimised_data(request: RequestModel):
     results = dict()
     metadata = {"optimiser": {
@@ -21,6 +21,7 @@ def optimised_data(request: RequestModel):
     }}
     fields = request.fields[0]
     result = optimiser(fields.values, [fields.weights], [fields.capacity])
+    # result = []
     # results = optimiser([1, 2, 3], [[4, 5, 1]], [4])
 
     results["total_value"] = result[0]

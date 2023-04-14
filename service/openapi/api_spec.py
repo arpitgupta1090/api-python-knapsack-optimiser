@@ -1,6 +1,6 @@
 from service.openapi.sample_data import error_body, response_body
 
-odd_responses = {
+additional_responses = {
     200: {
         "description": "Success",
         "content": {
