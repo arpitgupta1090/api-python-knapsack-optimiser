@@ -18,5 +18,4 @@ def optimiser(values, weights, capacities):
             packed_values.append(i)
             packed_weights.append(weights[0][i])
             total_weight += weights[0][i]
-
     return computed_value, total_weight, packed_values, packed_weights

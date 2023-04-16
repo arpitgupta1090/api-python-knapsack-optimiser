@@ -95,4 +95,5 @@ class ValidationExceptionJsonFormat(ExceptionFormat):
 
 def exception_format_builder(error_class_name, input_request, error):
     class_name = getattr(sys.modules[__name__], error_class_name)
+    # print(type(class_name))
     return class_name(input_request, error)

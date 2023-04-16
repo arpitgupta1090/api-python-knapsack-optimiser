@@ -6,9 +6,7 @@ from service.schema.request import RequestModel
 from service.schema.response import ResponseModel
 from service.mapper.response_mapper import mapper
 
-router = APIRouter(
-    prefix="/api",
-)
+router = APIRouter(prefix="/api")
 
 
 @router.post("/optimiser", tags=["API"], response_model_exclude_none=True,

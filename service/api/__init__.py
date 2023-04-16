@@ -1,1 +1,1 @@
-from service.api.router import router
+from service.api.api_router import router

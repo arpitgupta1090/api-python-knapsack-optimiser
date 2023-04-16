@@ -1,6 +1,6 @@
 
 
-def mapper(input_request, model_output ):
+def mapper(input_request, model_output):
     results = dict()
 
     metadata = {"optimiser": input_request.optimiser}
