@@ -17,7 +17,7 @@
    2. The capacity of the knapsack.
    3. the values and weights of each item in the knapsack. (Please read the API section for more details.)
 
-##API
+## API
 
 1. This application uses REST API with request and response in json format.
 2. The format of the request json body and the output response (success and error) with examples are provided on the homepage of the application.
@@ -25,13 +25,13 @@
 4. You can also use following <a href="http://localhost:5000/tryit" target="_blank">link</a> (swagger doc "/tryit") to try out the API.
 
 
-##Installation
+## Installation
 
 1. To install and run the application on your machine, follow the simple steps:
    1. Clone the github repository source code from the link provided above.
    2. move to the folder "api-python-knapsack-optimiser" and run the command: `docker-compose up --build` .
 
-##Usage
+## Usage
 
 1. Use the url: `http://<BASE_URL>/` for the OpenAPI documentation.
 2. Hit the url: `http://<BASE_URL>/api/optimiser` with a post request and valid payload to get optimised data for your knapsack problem (refer to API doc on home page).
