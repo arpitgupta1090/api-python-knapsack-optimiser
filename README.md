@@ -8,10 +8,10 @@
 ## Introduction
 
 1. The **Knapsack Problem** : Given a set of items, each with a weight and a value, determine which items to include in the collection so that the total weight is less than or equal to a given limit and the total value is as large as possible.
-2. There are 3 types of Knapsack problem:
-   1. 0-1 knapsack problem
-   2. Bounded knapsack problem (BKP) 
-   3. Unbounded knapsack problem (UKP)
+2. There are 2 types of Knapsack problem:
+   1. 0-1 knapsack problem.
+   2. Partial knapsack problem.
+
 3. This application provides an API to solve the Knapsack problem based on the following details provided by the user:
    1. Type of Knapsack problem.
    2. The capacity of the knapsack.
@@ -38,3 +38,7 @@
 
     ### Unit Testing
     Run the following command `pytest -cov --cov-report:html:coverage-report` to run the unit test cases. A coverage report will be generated in 'coverage-report folder'.
+
+## Structure
+
+Please refer this [link](structure.md) for code structure. 
