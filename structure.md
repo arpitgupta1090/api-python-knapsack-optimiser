@@ -9,6 +9,7 @@ The main working directory of this code base contains following files/packages:
 3. 'docker-compose.yml' : contains steps to run the application on Docker.
 4. 'requirements.txt' : contains list of all the libraries/packages to be installed the docker image.
 5. 'README.md' and 'structure.md' : markdown files which contain details of the project/application.
+6. 'openapi.json': OpenAPI specification for the application.
 
 ---
 

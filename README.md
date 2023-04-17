@@ -21,7 +21,7 @@
 
 1. This application uses REST API with request and response in json format.
 2. The format of the request json body and the output response (success and error) with examples are provided on the homepage of the application.
-3. Please visit <a href="http://localhost:5000" target="_blank">this link</a> (home page "/" ) for more details on API documentation, once you start the app on your machine.
+3. Please visit <a href="http://localhost:5000" target="_blank">this link</a> (home page "/" ) for more details on API documentation, once you start the app on your machine. OR open ['openapi.json'](openapi.json) in any swagger/openapi editor.
 4. You can also use following <a href="http://localhost:5000/tryit" target="_blank">link</a> (swagger doc "/tryit") to try out the API.
 
 
