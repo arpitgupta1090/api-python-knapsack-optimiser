@@ -16,6 +16,7 @@
    1. Type of Knapsack problem.
    2. The capacity of the knapsack.
    3. the values and weights of each item in the knapsack. (Please read the API section for more details.)
+4. Here, we have used Knapsack problem solver provided by Google which is zero-one type of optimiser. [Google Optimization Tools](https://developers.google.com/optimization/bin/knapsack). 
 
 ## API
 

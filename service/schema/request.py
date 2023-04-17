@@ -9,8 +9,7 @@ class EnumOptimiserName(str, Enum):
 
 
 class EnumOptimiserType(str, Enum):
-    TYPE_ZERO_ONE = "zero-one"
-    TYPE_PARTIAL = "partial"
+    TYPE = "zero-one"
 
 
 class EnumOptimiserVersion(str, Enum):
